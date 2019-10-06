@@ -7,7 +7,8 @@ public class SUV extends Car {
 
 
     public SUV(String color, String wheels,int numberOfSeats, int sizeOfTrunk, boolean hasTrailer) {
-        super(color, wheels);
+        super();
+        avaiEngineSizes = new int[]{1, 2, 3};
         this.numberOfSeats = numberOfSeats;
         this.sizeOfTrunk = sizeOfTrunk;
         this.hasTrailer = hasTrailer;

@@ -5,7 +5,8 @@ public class Convertible extends Car{
     private int numberOfDoors;
 
     public Convertible(String color, String wheels, String roof, int numberOfDoors) {
-        super(color, wheels);
+        super();
+        avaiEngineSizes = new int[]{1, 2, 5};
         this.roof = roof;
         this.numberOfDoors = numberOfDoors;
     }
