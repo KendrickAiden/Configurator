@@ -1,31 +1,31 @@
 public class Convertible extends Car{
 
     // unique variables for the class
-    private String roof;
-    private int numberOfDoors;
+    private String doorStyle;
+    private String[] doorStyles = new String[]{"4-door", "2-door"};
+    private String wheelDrive;
+    private String[] wheelDriveTypes = new String[]{"Rear-wheel Drive", "All-wheel drive"};
 
-    public Convertible(String color, String wheels, String roof, int numberOfDoors) {
+    public Convertible() {
         super();
         avaiEngineSizes = new int[]{1, 2, 5};
-        this.roof = roof;
-        this.numberOfDoors = numberOfDoors;
     }
 
     // unique variables for the class
 
-    public String getRoof() {
-        return roof;
+    public String[] getDoorStyles(){
+        return doorStyles;
     }
 
-    public void setRoof(String roof) {
-        this.roof = roof;
+    public void setDoorStyle(String doorStyle) {
+        this.doorStyle = doorStyle;
     }
 
-    public int getNumberOfDoors() {
-        return numberOfDoors;
+    public String[] getWheelDriveTypes(){
+        return wheelDriveTypes;
     }
 
-    public void setNumberOfDoors(int numberOfDoors) {
-        this.numberOfDoors = numberOfDoors;
+    public void setWheelDrive(String wheelDrive) {
+        this.wheelDrive = wheelDrive;
     }
 }

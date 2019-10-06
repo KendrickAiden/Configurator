@@ -1,42 +1,32 @@
 public class SUV extends Car {
     // unique variables for the class
 
-    private int numberOfSeats;
-    private int sizeOfTrunk;
-    private boolean hasTrailer;
+    private String seatNumber;
+    private String[] avaiSeatNumbers = new String[]{"4", "4+1", "4+2"};
+    private boolean isOffroad;
 
 
-    public SUV(String color, String wheels,int numberOfSeats, int sizeOfTrunk, boolean hasTrailer) {
+    public SUV() {
         super();
         avaiEngineSizes = new int[]{1, 2, 3};
-        this.numberOfSeats = numberOfSeats;
-        this.sizeOfTrunk = sizeOfTrunk;
-        this.hasTrailer = hasTrailer;
     }
 
     // unique methods for the class
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+
+    public String[] getAvaiSeatNumbers() {
+        return avaiSeatNumbers;
     }
 
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
+    public void setSeatNumber(String seatNum){
+        this.seatNumber = seatNum;
     }
 
-    public int getSizeOfTrunk() {
-        return sizeOfTrunk;
+    public boolean isOffroad() {
+        return isOffroad;
     }
 
-    public void setSizeOfTrunk(int sizeOfTrunk) {
-        this.sizeOfTrunk = sizeOfTrunk;
-    }
-
-    public boolean isHasTrailer() {
-        return hasTrailer;
-    }
-
-    public void setHasTrailer(boolean hasTrailer) {
-        hasTrailer = hasTrailer;
+    public void setOffroad(boolean bool) {
+        this.isOffroad = bool;
     }
 }
