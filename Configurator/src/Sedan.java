@@ -17,7 +17,7 @@ public class Sedan extends Car {
         hasTrailer = hasTrailer;
     }
 
-    public String[] getBaclStyles() {
+    public String[] getBackStyles() {
         return avaiBackStyles;
     }
 
