@@ -1,25 +1,22 @@
+import java.util.List;
+
 public class Sedan extends Car {
-    private boolean hasTrailer;
-    public String backStyle;
-    public String[] avaiBackStyles = new String[]{"Sedan", "Station wagon", "Hatchback"};
+    String trailerAttachment;
+    private List<String> trailerAttachments = List.of("With trailer attachment", "No trailer attachment");
+    String backStyle;
+    private List<String> avaiBackStyles = List.of("Leather", "Plastic", "Wood", "Gold");
 
-    public Sedan(String color, String wheels, boolean hasTrailer) {
-        super();
-        avaiEngineSizes = new int[]{2, 3, 4};
 
+    public Sedan() {
+        super(List.of(1, 2, 3), List.of(2, 3, 4));
+        options.add(trailerAttachments);
+        options.add(avaiBackStyles);
     }
 
-    public boolean isHasTrailer() {
-        return hasTrailer;
+    public void setTrailerAttachment(String trailerAttachment) {
+        this.trailerAttachment = trailerAttachment;
     }
 
-    public void setHasTrailer(boolean hasTrailer) {
-        hasTrailer = hasTrailer;
-    }
-
-    public String[] getBackStyles() {
-        return avaiBackStyles;
-    }
 
     public void setBackStyle(String backStyle){
         this.backStyle = backStyle;

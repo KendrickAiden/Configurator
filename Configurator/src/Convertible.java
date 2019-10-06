@@ -1,31 +1,27 @@
+import java.util.List;
+
 public class Convertible extends Car{
 
     // unique variables for the class
-    private String doorStyle;
-    private String[] doorStyles = new String[]{"4-door", "2-door"};
-    private String wheelDrive;
-    private String[] wheelDriveTypes = new String[]{"Rear-wheel Drive", "All-wheel drive"};
+    private String doorNum;
+    private List<String> avaiDoorNum = List.of("1 door", "2 doors", "4 doors");
+    private String roofMat;
+    private List<String> avaiRoofMat = List.of("Aluminium", "Canvas", "Plastic", "Gold");
 
     public Convertible() {
-        super();
-        avaiEngineSizes = new int[]{1, 2, 5};
+        //first is engine types, second is tire types
+        super(List.of(2, 3, 4), List.of(1, 2, 3));
+        options.add(avaiDoorNum);
+        options.add(avaiRoofMat);
     }
 
     // unique variables for the class
 
-    public String[] getDoorStyles(){
-        return doorStyles;
+    public void setDoorNum(String doorNum) {
+        this.doorNum = doorNum;
     }
 
-    public void setDoorStyle(String doorStyle) {
-        this.doorStyle = doorStyle;
-    }
-
-    public String[] getWheelDriveTypes(){
-        return wheelDriveTypes;
-    }
-
-    public void setWheelDrive(String wheelDrive) {
-        this.wheelDrive = wheelDrive;
+    public void setRoofMat(String roofMat) {
+        this.roofMat = roofMat;
     }
 }
