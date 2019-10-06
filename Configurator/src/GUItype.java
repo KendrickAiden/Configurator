@@ -6,111 +6,82 @@ import javax.swing.JFrame;
 
 public class GUItype extends JFrame implements ActionListener{
 
-    private JPanel panelSUV = new JPanel();
-    private JPanel panelSED = new JPanel();
-    private JPanel panelCON = new JPanel();
+    private JPanel panelCar = new JPanel();
     private JLabel carLabel;
-    private String[] suvSeats = {"4 seats", "5 seats", "7 seats", "8 seats"};
-    private String[] suvDrive = {"2x4", "4x4"};
-    private String[] suvEngine = {"type 3", "type 4", "type 5"};
-    private String[] suvTires = {"type 3", "type 4", "type 5"};
-    private String[] sedTrailerAttachment = {"With trailer attachment", "No trailer attachment"};
-    private String[] sedInterior = {"Leather", "Plastic", "Wood", "Gold"};
-    private String[] sedEngine = {"type 1", "type 2", "type 3"};
-    private String[] sedTires = {"type 2", "type 2", "type 4"};
-    private String[] conDoors = {"1 door", "2 doors", "4 doors"};
-    private String[] conRoof = {"Aluminium", "Canvas", "Plastic", "Gold"};
-    private String[] conEngine = {"type 2", "type 3", "type 4"};
-    private String[] conTires = {"type 1", "type 2", "type 3"};
-    private JComboBox<String> suvSeatsCB = new JComboBox<>(suvSeats);
-    private JComboBox<String> suvDriveCB = new JComboBox<>(suvDrive);
-    private JComboBox<String> suvEngineCB = new JComboBox<>(suvEngine);
-    private JComboBox<String> suvTiresCB = new JComboBox<>(suvTires);
-    private JComboBox<String> sedTrailerAttachmentCB = new JComboBox<>(sedTrailerAttachment);
-    private JComboBox<String> sedInteriorCB = new JComboBox<>(sedInterior);
-    private JComboBox<String> sedEngineCB = new JComboBox<>(sedEngine);
-    private JComboBox<String> sedTiresCB = new JComboBox<>(sedTires);
-    private JComboBox<String> conDoorsCB = new JComboBox<>(conDoors);
-    private JComboBox<String> conRoofCB = new JComboBox<>(conRoof);
-    private JComboBox<String> conEngineCB = new JComboBox<>(conEngine);
-    private JComboBox<String> conTiresCB = new JComboBox<>(conTires);
+    Car car;
+    private JComboBox<Object> carColors;
+    private JComboBox<Object> carEngine;
+    private JComboBox<Object> carTires;
+    private JComboBox<Object> carOption1;
+    private JComboBox<Object> carOption2;
+    int num;
 
 
 
 
-    public GUItype(String title){
+    public GUItype(String title, Car carIn){
         super(title);
+        this.car = carIn;
         System.out.println(title);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(930, 600);
 
-        panelSUV.setBackground(Color.PINK);
-        panelSED.setBackground(Color.ORANGE);
-        panelCON.setBackground(Color.YELLOW);
+        panelCar.setBackground(Color.black);
 
-        suvSeatsCB.addActionListener(this);
-        suvDriveCB.addActionListener(this);
-        suvEngineCB.addActionListener(this);
-        suvTiresCB.addActionListener(this);
-        sedTrailerAttachmentCB.addActionListener(this);
-        sedInteriorCB.addActionListener(this);
-        sedEngineCB.addActionListener(this);
-        sedTiresCB.addActionListener(this);
-        conDoorsCB.addActionListener(this);
-        conRoofCB.addActionListener(this);
-        conEngineCB.addActionListener(this);
-        conTiresCB.addActionListener(this);
+        carColors = new JComboBox<>(car.options.get(0).toArray());
+        carEngine = new JComboBox<>(car.options.get(1).toArray());
+        carTires = new JComboBox<>(car.options.get(2).toArray());
+        carOption1 = new JComboBox<>(car.options.get(3).toArray());
+        carOption2 = new JComboBox<>(car.options.get(4).toArray());
+
+
+        carColors.addActionListener(this);
+        carEngine.addActionListener(this);
+        carTires.addActionListener(this);
+        carOption1.addActionListener(this);
+        carOption2.addActionListener(this);
+
+        carColors.setActionCommand("color");
+        carEngine.setActionCommand("engine");
+        carTires.setActionCommand("tires");
+        carOption1.setActionCommand("option1");
+        carOption2.setActionCommand("option2");
+
+        car.setColor(car.options.get(0).get(0));
+        car.setEngine(car.options.get(1).get(0));
+        car.setTires(car.options.get(2).get(0));
+        car.setOption1(car.options.get(3).get(0));
+        car.setOption2(car.options.get(4).get(0));
+
+
         this.setLayout(new GridLayout(3, 4));
-        carLabel = new JLabel("This is your car: ");
-        carLabel.setVerticalTextPosition(JLabel.BOTTOM);
-        carLabel.setHorizontalTextPosition(JLabel.CENTER);
+        carLabel = new JLabel(car.displayResult(), SwingConstants.CENTER);
+        carLabel.setHorizontalAlignment(JLabel.CENTER);
+
         initPanel(title);
         initType(title);
 
     }
 
-    private void initPanel(String title){
-        if (title.equals("SUV")){
-            System.out.println("SUV working");
-            changePanel(panelSUV);
-        }
-        else if (title.equals("SEDAN")){
-            changePanel(panelSED);
-        }
-        else if (title.equals("CONVERTIBLE")){
-            changePanel(panelCON);
-        }
+    private void initPanel(String title) {
+        changePanel(panelCar);
     }
 
     private void initType(String title){
-        if (title.equals("SUV")){
-            add(suvSeatsCB);
-            add(suvDriveCB);
-            add(suvEngineCB);
-            add(suvTiresCB);
-            add(carLabel);
+        add(carColors);
+        add(carEngine);
+        add(carTires);
+        add(carOption1);
+        add(carOption2);
+        add(carLabel);
+        carLabel.setHorizontalAlignment(JLabel.CENTER);
 
-        }
-        else if (title.equals("SEDAN")){
-            add(sedTrailerAttachmentCB);
-            add(sedInteriorCB);
-            add(sedEngineCB);
-            add(sedTiresCB);
-            add(carLabel);
-        }
-        else if (title.equals("CONVERTIBLE")){
-            add(conDoorsCB);
-            add(conRoofCB);
-            add(conEngineCB);
-            add(conTiresCB);
-            add(carLabel);
-        }
     }
 
     public void changePanel(JPanel panel) {
         getContentPane().removeAll();
         getContentPane().add(panel);
-        setLayout(new GridLayout(3,4));
+        setLayout(new GridLayout(4,4));
         getContentPane().doLayout();
         update(getGraphics());
 
@@ -118,12 +89,39 @@ public class GUItype extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Here should be the action listeners for the comboboxes to display the car choice
+        String origin = e.getActionCommand();
+        System.out.print(origin);
+        num = 0;
+        switch (origin) {
+            case "color":
+                num = carColors.getSelectedIndex();
+                int[] rgbColors = car.colorToRGB(car.options.get(0).get(num));
+                panelCar.setBackground(new Color(rgbColors[0], rgbColors[1], rgbColors[2]));
+                car.setColor(car.options.get(0).get(num));
+                break;
+            case "engine":
+                num = carEngine.getSelectedIndex();
+                car.setEngine(car.options.get(1).get(num));
+                break;
+            case "tires":
+                num = carTires.getSelectedIndex();
+                car.setTires(car.options.get(2).get(num));
+                break;
+            case "option1":
+                num = carOption1.getSelectedIndex();
+                car.setOption1(car.options.get(3).get(num));
+                break;
+            case "option2":
+                num = carOption2.getSelectedIndex();
+                car.setOption2(car.options.get(4).get(num));
+                break;
+        }
+        carLabel.setText(car.displayResult());
 
     }
 
     public static void main(String args[]){
-        GUItype type = new GUItype("SUV");
+        GUItype type = new GUItype("SUV", new SUV());
         type.setLocationRelativeTo(null);
         type.setVisible(true);
 

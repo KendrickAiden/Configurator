@@ -37,7 +37,17 @@ public class GUImain extends JFrame{
 
     private void changeFrameType(JButton btn){
         this.dispose();
-        GUItype type = new GUItype(btn.getText());
+        Car car;
+        if (btn.getText() == "SUV"){
+            car = new SUV();
+        }
+        else if( btn.getText() == "SEDAN"){
+            car = new Sedan();
+        }
+        else{
+            car = new Convertible();
+        }
+        GUItype type = new GUItype(btn.getText(), car);
         type.setLocationRelativeTo(null);
         type.setVisible(true);
     }

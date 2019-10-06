@@ -11,12 +11,12 @@ public class Car {
     private List<String> colors = List.of("black", "white", "red", "green");
 
     //array vsetkych available engine sizes. maybe better way to program this, standin for now
-    private List<Integer> avaiEngineSizes;
-    private List<Integer> avaiTireTypes;
-    public ArrayList<List> options = new ArrayList<>();
+    private List<String> avaiEngineSizes;
+    private List<String> avaiTireTypes;
+    public ArrayList<List<String>> options = new ArrayList<>();
 
 
-    public Car(List<Integer> engineSizes, List<Integer> tireTypes) {
+    public Car(List<String> engineSizes, List<String> tireTypes) {
         this.avaiEngineSizes = engineSizes;
         this.avaiTireTypes = tireTypes;
         options.add(colors);
@@ -24,35 +24,46 @@ public class Car {
         options.add(avaiTireTypes);
     }
 
-    public void setEngine(int size){
+    public void setEngine(String strSize){
         /* creates the engine object*/
-        this.engine = new Engine(size);
+        this.engine = new Engine(strSize);
         this.topSpeed = 32 * (int)Math.pow(engine.getHorsePower(), 0.33);
     }
 
-    public String[] getEngineSizes() {
-            /* This creates a string array of every availabel engine type for the gui*/
-            String[] engineSizes = new String[3];
-            for (int i = 0; i < 3; i++) {
-                engineSizes[i] = "Engine" + Integer.toString(avaiEngineSizes.get(i));
-            }
-        return engineSizes;
+    public void setTires(String tires){
+        this.tire = new Tires(tires);
     }
 
     public List<String> getColors() {
         /* da nam vsetky available colors pre gui*/
         return colors;
     }
+    public void setOption1(String option1){
 
+    }
+
+    public void setOption2(String option2){
+
+    }
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public String displayResultMain(){
+        String result = "<html>Your car is a " + this.color + " " + this.getClass().getSimpleName() + " with a top speed of " +
+                Integer.toString(this.topSpeed)+ ". It has a " + engine.strsize + " engine with " +
+                engine.getHorsePower() + " horsepower and " + tire.type + " tires.";
+        return result;
+    }
+    public String displayResult(){
+        return displayResultMain();
     }
 
     public int[] colorToRGB(String color){
         /* this gives us the RGB value of the color based on the string */
         switch (color){
             case "black":
-                return new int[]{235, 235, 235};
+                return new int[]{25, 25, 25};
 
             case "red":
                 return new int[]{240, 128, 128};
@@ -61,9 +72,11 @@ public class Car {
                 return new int[]{34, 134, 34};
 
             case "white":
-                return new int[]{10, 10, 10};
+                return new int[]{220, 220, 220};
         }
         //default je boring white
         return new int[]{0, 0, 0};
     }
+
+
 }

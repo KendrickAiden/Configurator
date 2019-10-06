@@ -1,7 +1,7 @@
 import java.lang.Math;
 public class Tires {
     // unique variables for the class
-    private String type;
+    public String type;
 
     public Tires(String type) {
         this.type = type;

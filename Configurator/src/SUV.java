@@ -9,7 +9,7 @@ public class SUV extends Car {
     private List<String> avaiWheelDrives = List.of("2x4", "4x4");
 
     public SUV() {
-        super(List.of(3, 4, 5), List.of(3, 4, 5));
+        super(List.of("Engine Med", "Engine Big", "Engine VeryBig"), List.of("Tire 3", "Tire 4", "Tire 5"));
         options.add(suvSeats);
         options.add(avaiWheelDrives);
     }
@@ -17,12 +17,15 @@ public class SUV extends Car {
     // unique methods for the class
 
 
-    public void setSeatNumber(String seatNum){
+    public void setOption1(String seatNum){
         this.seatNumber = seatNum;
     }
 
-    public void setDrive(String drive) {
+    public void setOption2(String drive) {
         this.wheelDrive = drive;
     }
 
+    public String displayResult(){
+        return displayResultMain() + " This SUV has " + seatNumber + " and " + wheelDrive + " wheel drive.</html>";
+    }
 }

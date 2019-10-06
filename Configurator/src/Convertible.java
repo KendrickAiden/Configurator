@@ -10,18 +10,22 @@ public class Convertible extends Car{
 
     public Convertible() {
         //first is engine types, second is tire types
-        super(List.of(2, 3, 4), List.of(1, 2, 3));
+        super(List.of("Engine Small", "Engine Med", "Engine Big"), List.of("Tire 2", "Tire 3", "Tire 4"));
         options.add(avaiDoorNum);
         options.add(avaiRoofMat);
     }
 
     // unique variables for the class
 
-    public void setDoorNum(String doorNum) {
+    public void setOption1(String doorNum) {
         this.doorNum = doorNum;
     }
 
-    public void setRoofMat(String roofMat) {
+    public void setOption2(String roofMat) {
         this.roofMat = roofMat;
+    }
+
+    public String displayResult(){
+        return displayResultMain() + " This SUV has " + doorNum + " and a roof made from " + roofMat + " .</html>";
     }
 }
